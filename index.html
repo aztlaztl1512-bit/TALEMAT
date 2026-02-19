@@ -1,218 +1,251 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المرجع الشامل للتناظر اللفظي</title>
-    <style>
-        @import url('https://fonts.googleapis.com');
+<meta charset="UTF-8">
+<style>
+    :root {
+        --primary-color: #16a085;
+        --accent-color: #f39c12;
+        --instruction-bg: #fffbf0;
+        --bg-soft: #f4f7f6;
+        --text-dark: #2c3e50;
+    }
 
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e67e22;
-            --success: #27ae60;
-            --bg: #f0f2f5;
-        }
+    body { background-color: #dfe6e9; padding: 20px; margin: 0; line-height: 1.6; }
 
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg);
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
+    .main-container {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
 
-        .main-guide {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
+    .hero-header {
+        background: linear-gradient(135deg, #16a085, #2c3e50);
+        color: white;
+        text-align: center;
+        padding: 45px 20px;
+    }
 
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-        }
+    .hero-header h1 { margin: 0; font-size: 2.2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    .hero-header p { margin-top: 10px; opacity: 0.9; font-size: 1.1em; }
 
-        .header h1 { margin: 0; font-size: 2.2em; font-weight: 800; }
-        .header p { margin-top: 10px; opacity: 0.9; font-size: 1.1em; }
-        
-        .user-info {
-            margin-top: 15px;
-            font-size: 0.95em;
-            background: rgba(255,255,255,0.1);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+    .content-padding { padding: 35px; }
 
-        .content { padding: 30px; }
+    /* قسم التعليمات */
+    .instruction-box {
+        background: var(--instruction-bg);
+        border: 2px solid #f1c40f;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 40px;
+    }
 
-        .strategy-box {
-            background: #fff9e6;
-            border-right: 6px solid var(--accent);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
+    .instruction-box h2 { color: #d35400; margin-top: 0; font-size: 1.5em; border-bottom: 2px solid #f1c40f; display: inline-block; padding-bottom: 5px; }
+    
+    .step-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 1.05em; color: #444; }
+    .step-num { background: #d35400; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold; font-size: 0.8em; }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-        }
+    /* شبكة البطاقات */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+    }
 
-        .relation-card {
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.3s ease;
-            background: #fff;
-        }
+    .relation-card {
+        border: 2px solid #f0f0f0;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .relation-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .relation-card:hover { border-color: var(--primary-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-        .relation-name {
-            color: var(--secondary);
-            font-weight: 800;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            display: block;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 5px;
-        }
+    .relation-title {
+        background: var(--bg-soft);
+        padding: 12px 20px;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: var(--primary-color);
+        border-bottom: 1px solid #eee;
+    }
 
-        .example-tag {
-            background: #e8f4fd;
-            color: #2980b9;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
+    .example-line {
+        padding: 15px;
+        font-size: 1.5em;
+        text-align: center;
+        color: var(--text-dark);
+        background: #fff;
+        font-weight: bold;
+    }
 
-        .pro-tip {
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px dashed #28a745;
-        }
+    .feedback-zone {
+        background: #fdfdfd;
+        padding: 15px;
+        border-top: 1px dashed #ddd;
+        flex-grow: 1;
+    }
 
-        .footer-note {
-            text-align: center;
-            padding: 25px;
-            background: #f8f9fa;
-            border-top: 1px solid #eee;
-        }
+    .feedback-tag {
+        background: var(--accent-color);
+        color: white;
+        padding: 2px 10px;
+        border-radius: 6px;
+        font-size: 0.8em;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
 
-        .footer-note .credit {
-            font-weight: 800;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 5px;
-        }
+    .feedback-text { color: #666; font-size: 0.9em; line-height: 1.6; }
 
-        .footer-note .school {
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
+    .footer {
+        background: #2c3e50;
+        color: white;
+        padding: 30px;
+        text-align: center;
+        margin-top: 40px;
+    }
 
-        strong { color: #c0392b; }
-    </style>
+    .name-tag { font-size: 1.4em; font-weight: bold; }
+    .school-tag { color: #1abc9c; margin-top: 5px; }
+
+    @media (max-width: 600px) {
+        .cards-grid { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
 
-<div class="main-guide">
-    <div class="header">
-        <h1>المرجع الشامل في التناظر اللفظي</h1>
-        <p>دليل الطالب الذكي للتميز في اختبارات القدرات</p>
-        <div class="user-info">
-   
+<div class="main-container">
+    <div class="hero-header">
+        <h1>🔍 الموسوعة الشاملة للتناظر اللفظي</h1>
+        <p>إعداد أ / عبدالعزيز الفيفي - ثانوية الأمير عبدالمجيد</p>
+    </div>
+
+    <div class="content-padding">
+        
+        <div class="instruction-box">
+            <h2>🚀 كيف تضمن درجة التناظر؟</h2>
+            <div class="step-item"><div class="step-num">١</div> كوّن جملة تربط الكلمتين (مثال: الكتاب فيه معلومات).</div>
+            <div class="step-item"><div class="step-num">٢</div> انتبه لاتجاه العلاقة (من اليمين لليسار أو العكس).</div>
+            <div class="step-item"><div class="step-num">٣</div> إذا تشابهت علاقتان، اختر الأقرب في "النوع" (مثل كلاهما كائنات حية).</div>
+        </div>
+
+        <div class="cards-grid">
+            
+            <!-- 1 -->
+            <div class="relation-card">
+                <div class="relation-title">١. الجزء من الكل 🧩</div>
+                <div class="example-line">غرفة : منزل</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الغرفة جزء لا يتجزأ من المنزل. ابحث عن (فصل : مدرسة) أو (غصن : شجرة).</div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="relation-card">
+                <div class="relation-title">٢. الترادف 🤝</div>
+                <div class="example-line">مخافة : خشية</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الكلمتان بنفس المعنى تماماً. ابحث عن (فوز : انتصار) أو (غنى : ثراء).</div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="relation-card">
+                <div class="relation-title">٣. التضاد ↔️</div>
+                <div class="example-line">علم : جهل</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">علاقة عكسية. ابحث عن (ليل : نهار) أو (تواضع : كبر).</div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="relation-card">
+                <div class="relation-title">٤. المكانية 📍</div>
+                <div class="example-line">عرين : أسد</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">العرين هو مسكن الأسد. ابحث عن (غمد : سيف) أو (وجار : ذئب).</div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="relation-card">
+                <div class="relation-title">٥. الأداة ومستخدمها 🛠️</div>
+                <div class="example-line">مشرط : جراح</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الجراح يستخدم المشرط للعمل. ابحث عن (قلم : كاتب) أو (منجل : فلاح).</div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="relation-card">
+                <div class="relation-title">٦. السبب والنتيجة ⚡</div>
+                <div class="example-line">فيروس : مرض</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الفيروس يسبب المرض. ابحث عن (اجتهاد : نجاح) أو (ركض : تعب).</div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="relation-card">
+                <div class="relation-title">٧. الفئة (التصنيف) 🍎</div>
+                <div class="example-line">ريـال : عملات</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الريال هو نوع من أنواع العملات. ابحث عن (تفاح : فواكه) أو (ياسمين : أزهار).</div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="relation-card">
+                <div class="relation-title">٨. الاقتران الزماني ⏰</div>
+                <div class="example-line">صوم : رمضان</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الصوم يحدث في وقت رمضان. ابحث عن (نوم : ليل) أو (قطاف : صيف).</div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="relation-card">
+                <div class="relation-title">٩. المصدرية 🍯</div>
+                <div class="example-line">نحلة : عسل</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">النحلة هي من تنتج العسل. ابحث عن (بقر : حليب) أو (شمس : ضوء).</div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="relation-card">
+                <div class="relation-title">١٠. الوظيفة 🦷</div>
+                <div class="example-line">أسنان : مضغ</div>
+                <div class="feedback-zone">
+                    <span class="feedback-tag">تحليل</span>
+                    <div class="feedback-text">الأسنان وظيفتها المضغ. ابحث عن (عين : رؤية) أو (رئة : تنفس).</div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="content">
-        <!-- قسم خوارزمية الحل -->
-        <div class="strategy-box">
-            <h2 style="margin-top:0">🚀 خوارزمية الحل الذهبية</h2>
-            <ol>
-                <li><strong>تكوين جملة:</strong> اربط الكلمتين في جملة دقيقة (مثال: الكتاب يحتوي على معلومات).</li>
-                <li><strong>تحديد الاتجاه:</strong> هل بدأت بـ (الكل : الجزء) أم (الجزء : الكل)؟</li>
-                <li><strong>المقارنة:</strong> طبق الجملة والاتجاه على الخيارات الأربعة.</li>
-                <li><strong>الاستبعاد:</strong> استبعد الخيارات التي لا تطابق الجملة أو تخالف الاتجاه.</li>
-            </ol>
-        </div>
-
-        <!-- شبكة العلاقات -->
-        <div class="grid-container">
-            <div class="relation-card">
-                <span class="relation-name">1. علاقة الكل بالجزء</span>
-                <p>الكلمة الأولى هي الأساس والثانية قطعة منها.</p>
-                <span class="example-tag">مثال: كتاب : ورقة | يوم : ساعة</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">2. علاقة الترادف</span>
-                <p>الكلمتان لهما نفس المعنى تماماً.</p>
-                <span class="example-tag">مثال: فوز : انتصار | إخفاق : فشل</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">3. علاقة التضاد</span>
-                <p>الكلمة الثانية هي عكس معنى الأولى.</p>
-                <span class="example-tag">مثال: سخاء : بخل | شجاعة : جبن</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">4. علاقة الوظيفة</span>
-                <p>الكلمة الأولى هي الأداة والثانية وظيفتها.</p>
-                <span class="example-tag">مثال: سكين : قطع | بوصلة : توجيه</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">5. علاقة فئة (من فصيلة)</span>
-                <p>الكلمتان تنتميان لنفس المجموعة أو النوع.</p>
-                <span class="example-tag">مثال: تفاح : برتقال | نحاس : حديد</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">6. علاقة المكانية</span>
-                <p>الكلمة الأولى تتواجد أو توجد في الثانية.</p>
-                <span class="example-tag">مثال: غابة : أشجار | قلب : صدر</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">7. علاقة السبب والنتيجة</span>
-                <p>الكلمة الأولى تؤدي إلى وقوع الثانية.</p>
-                <span class="example-tag">مثال: إهمال : رسوب | فيروس : مرض</span>
-            </div>
-
-            <div class="relation-card">
-                <span class="relation-name">8. علاقة التدرج</span>
-                <p>انتقال من حالة ضعيفة إلى حالة أقوى.</p>
-                <span class="example-tag">مثال: ابتسامة : ضحكة | دافئ : حار</span>
-            </div>
-        </div>
-
-        <div class="pro-tip">
-            <strong>⚠️ انتبه لـ "فخ" الترتيب:</strong> <br>
-            إذا كان السؤال (شجر : غصن) الجواب هو (كتاب : ورقة) وليس (فصل : مدرسة)؛ لأن السؤال بدأ بالكل ثم الجزء.
-        </div>
-    </div>
-
-    <div class="footer-note">
-        <span class="credit">تم هذا العمل بواسطة الأستاذ: [عبدالعزيز الفيفي]</span>
-        <span class="school">📍 [ثانوية الأمير عبد المجيد] - مع تمنياتنا لكم بالتوفيق</span>
+    <div class="footer">
+        <div class="name-tag">أ / عبدالعزيز الفيفي</div>
+        <div class="school-tag">ثانوية الأمير عبدالمجيد 🎓 شعلة التميز</div>
     </div>
 </div>
 
